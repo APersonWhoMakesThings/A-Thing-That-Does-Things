@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Access code required</title>
+<meta name="description" content="We comply with all stated regulations.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --bg:#ffffff; --text:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --err:#c9302c;
+    --btn:#1d1d1f; --btn-text:#ffffff; --btn-hover:#3a3a3c;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b0b0c; --text:#f5f5f7; --muted:#a1a1a6; --line:#3a3a3c; --err:#ff6b61;
+      --btn:#f5f5f7; --btn-text:#0b0b0c; --btn-hover:#d2d2d7;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b0b0c; --text:#f5f5f7; --muted:#a1a1a6; --line:#3a3a3c; --err:#ff6b61;
+    --btn:#f5f5f7; --btn-text:#0b0b0c; --btn-hover:#d2d2d7;
+  }
+  html,body{height:100%;margin:0}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    display:flex;align-items:center;justify-content:center;
+    padding:0 16px;box-sizing:border-box;text-align:center;
+  }
+  main{width:100%;max-width:380px;display:flex;flex-direction:column;align-items:center;gap:18px}
+  h1{margin:0;font-size:22px;font-weight:650}
+  p{margin:0;font-size:15px;line-height:1.5;color:var(--muted)}
+  p a{color:var(--text);font-weight:600}
+  .btn{
+    display:inline-block;box-sizing:border-box;padding:13px 24px;border-radius:12px;border:0;
+    background:var(--btn);color:var(--btn-text);text-decoration:none;
+    font:inherit;font-size:16px;font-weight:600;cursor:pointer;
+  }
+  .btn:hover{background:var(--btn-hover)}
+  .btn:focus-visible,input:focus-visible,p a:focus-visible{outline:3px solid var(--muted);outline-offset:3px}
+  .btn[disabled]{opacity:.6;cursor:default}
+  form{width:100%;display:flex;flex-direction:column;gap:10px}
+  input{
+    box-sizing:border-box;width:100%;padding:13px 14px;border-radius:12px;
+    border:1px solid var(--line);background:var(--bg);color:var(--text);
+    font:inherit;font-size:16px;text-align:center;letter-spacing:.08em;
+  }
+  .err{min-height:20px;font-size:14px;color:var(--err)}
+  .done{display:none;flex-direction:column;align-items:center;gap:12px;width:100%}
+  .links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  footer{margin-top:14px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <div id="locked-view" style="display:contents">
+    <h1>Access code required</h1>
+    <p>Message <a href="https://discord.com/users/478345634487861268" target="_blank" rel="noopener">tedtheidot</a> on Discord for a free access code.</p>
+    <form id="form" autocomplete="off">
+      <input id="key" name="key" placeholder="XXXX-XXXX-XXXX" aria-label="Access code" spellcheck="false" autocapitalize="characters" required>
+      <button class="btn" id="go" type="submit">Continue</button>
+      <div class="err" id="err" role="alert" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <div class="done" id="done">
+    <p id="status" aria-live="polite"></p>
+    <div class="links">
+      <button class="btn" id="win" type="button"></button>
+      <button class="btn" id="mac" type="button"></button>
+    </div>
+  </div>
+
+  <footer>We comply with all stated regulations.</footer>
+</main>
+
+<!-- Sealed with the access code; the files beside this page are sealed with a
+     key that only this block holds. -->
+<script type="application/json" id="locked">{"v":2,"iter":250000,"salt":"F1Y+C8sCB/OSEyOpR6UXrg==","iv":"l+izpCcBniARU3Q2","ct":"xk7dx8I2r23+daScdGVeDDuJJTYhHMJbSxihzPSUU2RAa7vuWK/wEKOFybnnRloeNwCwAttDL0oJDMxpnyTi6BdjX8QP4Er04KCU4QA87Tw1JjQqDvJcxPKg1G6hjhbIfMrc2s+8104TIquNgjKKpsd/CcpFzd/CIfEEPnw+y5xsY06i/jkh/Yvw/LR+htNC9GU54E90e1pKISFu1tkg5TCGWHEnTOm4+kHyZn/EmQjadELiv5NO8oJT80K4MnNn0QO/CEeOlk5c8vJsrspqLOqVA0deME3rfcbiLWoUbfoVWYHNYapXDDITfMJrLt1AisfSTs96KJ9iH8U7jmnOXBhzIDlQ4OlsglxPp/UsWVb0Cumggy92I3+pcybY+XpniYuRxZik+GeYw8Mn7D5DAXrGR2GtrndMxUHjZDjf4ORxziQZKLzKngpF6H8GfLG25Pdsi3HXF3ni9+9Pcol9AP5cHRkwXj1mgWSkpBVQ6OEWmc7Czh6WZ6xe/CjMjH6cz0smoCGJaf3hxLR2+qGmUP+N/Zhg3p5qOrTOClMrmumLA3WTtxcVEpVD7ZuiNfhy4qWSDbBljmG4CnI9dZ+HR3FbLedLpKpYXNzD/gvyvI/yeIjcouc4i/90GF6wXjOp0DDJRmT/o0+GozWE/3GKWZGltGtx+KOnMXU4Q0FHaXLEnAzv/n7dw321LnpQ2N6fHvDlL5VjVv+M4rpuPDr061NmHVywPYjFWLb5+t7D5BvJlcUzSRbCSsMbwMM="}</script>
+<script>
+  (function () {
+    var locked = JSON.parse(document.getElementById("locked").textContent);
+    var $ = function (id) { return document.getElementById(id); };
+    var sealed, fileKey, ready = {};
+
+    function bytes(b64) {
+      return Uint8Array.from(atob(b64), function (c) { return c.charCodeAt(0); });
+    }
+
+    // Keys ignore case, spaces and dashes (same rule as the sealing tool).
+    async function unlock(code) {
+      var raw = new TextEncoder().encode(code.toUpperCase().replace(/[^A-Z0-9]/g, ""));
+      var base = await crypto.subtle.importKey("raw", raw, "PBKDF2", false, ["deriveKey"]);
+      var aes = await crypto.subtle.deriveKey(
+        { name: "PBKDF2", salt: bytes(locked.salt), iterations: locked.iter, hash: "SHA-256" },
+        base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+      var plain = await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv: bytes(locked.iv) }, aes, bytes(locked.ct));
+      return JSON.parse(new TextDecoder().decode(plain));
+    }
+
+    // The visitor's platform, or null on phones, iPads, Linux and the rest.
+    function platform() {
+      var p = ((navigator.userAgentData && navigator.userAgentData.platform) ||
+               navigator.platform || navigator.userAgent || "").toLowerCase();
+      if (/windows|win32|win64/.test(p)) return "win";
+      if (/mac/.test(p) && !(navigator.maxTouchPoints > 1)) return "mac";
+      return null;
+    }
+
+    // Fetch one sealed file, open it, and hand it to the browser to save.
+    async function deliver(os) {
+      var f = sealed[os];
+      if (!ready[os]) {
+        $("win").disabled = $("mac").disabled = true;
+        var res = await fetch(f.path, { cache: "no-cache" });
+        if (!res.ok) throw new Error(res.status);
+        var parts = [], got = 0, total = f.size + 16, reader = res.body && res.body.getReader();
+        if (reader) {
+          for (;;) {
+            var step = await reader.read();
+            if (step.done) break;
+            parts.push(step.value); got += step.value.length;
+            $("status").textContent = sealed.msg.preparing.replace("{p}", Math.min(99, Math.floor(got * 100 / total)));
+          }
+        } else {
+          parts.push(new Uint8Array(await res.arrayBuffer()));
+        }
+        var data = new Blob(parts);
+        var plain = await crypto.subtle.decrypt(
+          { name: "AES-GCM", iv: bytes(f.iv) }, fileKey, await data.arrayBuffer());
+        ready[os] = URL.createObjectURL(new Blob([plain], { type: "application/octet-stream" }));
+        $("win").disabled = $("mac").disabled = false;
+      }
+      var a = document.createElement("a");
+      a.href = ready[os];
+      a.setAttribute("download", f.name);
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      $("status").textContent = sealed.msg.started;
+    }
+
+    function failed() {
+      $("status").textContent = sealed.msg.failed;
+      $("win").disabled = $("mac").disabled = false;
+    }
+
+    ["win", "mac"].forEach(function (os) {
+      $(os).addEventListener("click", function () { deliver(os).catch(failed); });
+    });
+
+    $("form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      $("err").textContent = "";
+      if (!window.crypto || !crypto.subtle) {
+        $("err").textContent = "This browser can't check codes. Try a current Chrome, Edge, Safari or Firefox.";
+        return;
+      }
+      $("go").disabled = true;
+      try {
+        sealed = await unlock($("key").value);
+      } catch (_) {
+        $("err").textContent = "That code didn't work. Check it and try again.";
+        $("go").disabled = false;
+        return;
+      }
+      fileKey = await crypto.subtle.importKey("raw", bytes(sealed.fk), "AES-GCM", false, ["decrypt"]);
+      $("win").textContent = sealed.win.label;
+      $("mac").textContent = sealed.mac.label;
+      $("locked-view").style.display = "none";
+      $("done").style.display = "flex";
+      var os = platform();
+      if (os) {
+        $(os === "win" ? "mac" : "win").style.display = "none";
+        deliver(os).catch(failed);
+      } else {
+        $("status").textContent = sealed.msg.pick;
+      }
+    });
+  })();
+</script>
+</body>
+</html>
